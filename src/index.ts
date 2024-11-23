@@ -1,4 +1,4 @@
-import { Elysia } from "elysia";
+import { Elysia, type AnyElysia, type MergeSchema } from "elysia";
 
 type SwishOptions = {
   level?: "default" | "verbose";
@@ -15,7 +15,7 @@ type SwishOptions = {
 export const swish = ({
   level = "default",
   gargles = {},
-}: SwishOptions = {}) => {
+}: SwishOptions = {}): AnyElysia => {
   const defaults: SwishOptions["gargles"] =
     level == "verbose"
       ? {
