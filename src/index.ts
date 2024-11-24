@@ -12,17 +12,77 @@
  *
  * @requires elysia - The Elysia framework to integrate with.
  *
- * @example
+ * ### Options
+ * The `swish` plugin accepts a configuration object with the following options:
+ *
+ * #### `level`
+ * - **Type:** `"default"` | `"verbose"`
+ * - **Default:** `"default"`
+ * - **Description:** Sets the verbosity level of logging.
+ *   - `"default"`: Logs basic information (e.g., method and path) for requests and responses.
+ *   - `"verbose"`: Logs additional details, including precise timing for each request/response.
+ *
+ * #### `gargles`
+ * - **Type:** `{ timestamp?: boolean; colors?: boolean }`
+ * - **Default:** Based on `level`:
+ *   - If `level` is `"default"`:
+ *     - `timestamp`: `false`
+ *     - `colors`: `true`
+ *   - If `level` is `"verbose"`:
+ *     - `timestamp`: `true`
+ *     - `colors`: `true`
+ * - **Description:** Fine-grained control over logging behavior.
+ *   - `timestamp`: Whether to include timestamps (in milliseconds) for request/response durations.
+ *   - `colors`: Whether to colorize logs based on HTTP method.
+ *
+ * @example Basic Usage
  * ```ts
  * import { Elysia } from "elysia";
  * import { swish } from "@flosswash/swish";
  *
  * const app = new Elysia()
- *   .use(swish({ level: "verbose", gargles: { colors: true } }))
+ *   .use(swish())
  *   .get("/", () => "Hello, Swish!");
  *
  * app.listen(8080);
  * ```
+ *
+ * @example Verbose Mode
+ * ```ts
+ * import { Elysia } from "elysia";
+ * import { swish } from "@flosswash/swish";
+ *
+ * const app = new Elysia()
+ *   .use(swish({ level: "verbose" }))
+ *   .get("/", () => "Verbose logging enabled");
+ *
+ * app.listen(8080);
+ * ```
+ *
+ * @example Disable Colors
+ * ```ts
+ * import { Elysia } from "elysia";
+ * import { swish } from "@flosswash/swish";
+ *
+ * const app = new Elysia()
+ *   .use(swish({ gargles: { colors: false } }))
+ *   .get("/", () => "No colors for these logs");
+ *
+ * app.listen(8080);
+ * ```
+ *
+ * @example Enable Timestamps Only
+ * ```ts
+ * import { Elysia } from "elysia";
+ * import { swish } from "@flosswash/swish";
+ *
+ * const app = new Elysia()
+ *   .use(swish({ gargles: { timestamp: true, colors: false } }))
+ *   .get("/", () => "Logs with timestamps only");
+ *
+ * app.listen(8080);
+ * ```
+ *
  */
 
 import { Elysia, type MergeSchema } from "elysia";
