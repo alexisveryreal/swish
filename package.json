@@ -13,7 +13,7 @@
     "typescript": "^5.7.2"
   },
   "dependencies": {
-    "@hikyu/colors": "npm:@jsr/hikyu__colors",
+    "@hikyu/colors": "npm:@jsr/hikyu__colors@0.1.20",
     "elysia": "^1.1.25"
   }
 }
