@@ -2,6 +2,10 @@
   "name": "@flosswash/swish",
   "module": "src/index.ts",
   "type": "module",
+  "scripts": {
+    "test:watch": "bun test --watch ./test/swish.test.ts",
+    "dev": "bun run --watch src/main.ts"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },
@@ -9,6 +13,7 @@
     "typescript": "^5.7.2"
   },
   "dependencies": {
+    "@hikyu/colors": "npm:@jsr/hikyu__colors",
     "elysia": "^1.1.25"
   }
 }
