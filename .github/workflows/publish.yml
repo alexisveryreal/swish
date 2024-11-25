@@ -34,12 +34,9 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-
+        
       - name: Install Bun
         uses: oven-sh/setup-bun@v2
-
-      - name: Install Dependencies
-        run: bun install
 
       - name: Publish Package
         run: bunx jsr publish
